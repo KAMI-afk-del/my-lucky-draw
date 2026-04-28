@@ -6,7 +6,7 @@ if 'total' not in st.session_state:
 if 'wins' not in st.session_state:
     st.session_state.wins = 0
 if 'losses' not in st.session_state:
-    st.session_state.losses = 
+    st.session_state.losses = 0
 if 'profit' not in st.session_state:
     st.session_state.profit = 0
 
