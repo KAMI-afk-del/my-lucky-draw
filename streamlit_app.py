@@ -48,7 +48,7 @@ if st.button('🔥 点击开始抽奖 🔥'):
         st.text("wkzkbl😮")
         st.text("wzbyqs😤")
         st.text("nzzyswwzbsbll🥵")
-   elif luckly == 999:
+    elif luckly == 999:
         current_money = 488888
         st.balloons()
         st.success(f"wow;;;😮congratulations😮;;;wow\nyou get ${current_money}")
