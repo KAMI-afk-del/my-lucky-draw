@@ -18,10 +18,9 @@ if st.button("POOR (+500)"):
         st.toast("take the money and get the fuck away,you fucking noob")
         st.rerun()
     
-        st.divider()
- if st.button('清空数据重新开始'):
-        for key in st.session_state.keys():
-            del st.session_state[key]
+        st.divider() if st.button('清空数据重新开始'):
+             for key in st.session_state.keys():
+                    del st.session_state[key]
         st.rerun()
 
 COST_PER_DRAW = 10000
@@ -38,7 +37,7 @@ col3.metric("空奖次数", st.session_state.losses)
 col4.metric("累计盈利", f"${st.session_state.profit}", delta=f"{st.session_state.profit} USD")
 
 
-if st.button('🔥 点击开始抽奖 🔥'):
+    if st.button('🔥 点击开始抽奖 🔥'):
     st.session_state.total += 1
     luckly = random.randint(0, 1000)
     st.subheader(f"current luckly: {luckly}")
