@@ -88,9 +88,9 @@ else:
         st.write("🤮ewwwwwwwwwww🤮")
 
 record = f"{datetime.now().strftime('%H:%M:%S')} - 号码 {luckly}: 中奖 ${current_prize} ({result_msg})"
-            st.session_state.history.insert(0, record)
+         st.session_state.history.insert(0, record)
 else:
-        st.session_state.losses += 1
+    st.session_state.losses += 1
 if current_money > 0:
         st.session_state.wins += 1
         st.session_state.profit += current_money
