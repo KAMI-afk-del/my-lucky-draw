@@ -1,46 +1,43 @@
 import streamlit as st
 import random
 
-# --- 1. 初始化账本 (让网页记住数据) ---
 if 'total' not in st.session_state:
     st.session_state.total = 0
 if 'wins' not in st.session_state:
     st.session_state.wins = 0
 if 'losses' not in st.session_state:
-    st.session_state.losses = 0
+    st.session_state.losses = 
 if 'profit' not in st.session_state:
     st.session_state.profit = 0
 
 with st.sidebar:
     st.header("游戏选项")
    
-    if st.button("POOR (+500)"):
+if st.button("POOR (+500)"):
         st.session_state.profit += 500
         st.toast("take the money and get the fuck away,you fucking noob")
         st.rerun()
     
     st.divider()
-    if st.button('清空数据重新开始'):
+ if st.button('清空数据重新开始'):
         for key in st.session_state.keys():
             del st.session_state[key]
         st.rerun()
 
-# --- 3. 顶部仪表盘 ---
-# 抽奖单价
 COST_PER_DRAW = 10000
 
 st.set_page_config(page_title="超级抽奖机", page_icon="💰")
 st.title("🎰 幸运大抽奖")
 
-# --- 2. 显示仪表盘 (新增累计盈利) ---
+
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("总抽奖次数", st.session_state.total)
 col2.metric("中奖次数", st.session_state.wins)
 col3.metric("空奖次数", st.session_state.losses)
-# delta 是变化量，这里用来显示盈利总额，非常专业
+
 col4.metric("累计盈利", f"${st.session_state.profit}", delta=f"{st.session_state.profit} USD")
 
-# 抽奖按钮
+
 if st.button('🔥 点击开始抽奖 🔥'):
     st.session_state.total += 1
     luckly = random.randint(0, 1000)
@@ -48,7 +45,7 @@ if st.button('🔥 点击开始抽奖 🔥'):
     
     current_money = 0  # 用来记录本次抽奖赚了多少
     
-    # --- 3. 核心逻辑：判断奖金并累加盈利 ---
+
     if luckly == 91:
         current_money = 91919
         st.success(f"wow*congratulations*wow\nyou get ${current_money}")
@@ -98,13 +95,24 @@ if st.button('🔥 点击开始抽奖 🔥'):
         st.write("🤣lol🤣")
         st.write("🤮ewwwwwwwwwww🤮")
         st.write("🤮ewwwwwwwwwww🤮")
-# --- 4. 更新账本数据 ---
+
+   record = f"{datetime.now().strftime('%H:%M:%S')} - 号码 {luckly}: 中奖 ${current_prize} ({result_msg})"
+            st.session_state.history.insert(0, record)
+        else:
+            st.session_state.losses += 1
     if current_money > 0:
         st.session_state.wins += 1
         st.session_state.profit += current_money
 
-# --- 5. 侧边栏重置 ---
-if st.sidebar.button('重置所有数据'):
+
+    if st.sidebar.button('重置所有数据'):
     for key in st.session_state.keys():
         del st.session_state[key]
     st.rerun()
+        st.divider()
+st.subheader("📜 中奖历史记录")
+   if st.session_state.history:
+    for item in st.session_state.history[:20]
+        st.write(item)
+   else:
+    st.info("notting here")
