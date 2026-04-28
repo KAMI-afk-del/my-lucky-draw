@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+from datetime import datetime
 
 if 'total' not in st.session_state:
     st.session_state.total = 0
@@ -8,41 +9,32 @@ if 'wins' not in st.session_state:
 if 'losses' not in st.session_state:
     st.session_state.losses = 0
 if 'profit' not in st.session_state:
-    st.session_state.profit = 0
+    st.session_state.profit = 150000 
+if 'history' not in st.session_state:
+    st.session_state.history = []
+
+st.set_page_config(page_title="超级抽奖机 Pro", page_icon="🎰")
+st.title("🎰❗不要赌博❗")
 
 with st.sidebar:
     st.header("游戏选项")
-   
-if st.button("POOR (+500)"):
+    if st.button("💰 领取补助 (+500)"):
         st.session_state.profit += 500
-        st.toast("take the money and get the fuck away,you fucking noob")
         st.rerun()
-    
-        st.divider() if st.button('清空数据重新开始'):
-             for key in st.session_state.keys():
-                    del st.session_state[key]
+    st.divider()
+    if st.button('清空数据重新开始'):
+        for key in st.session_state.keys():
+            del st.session_state[key]
         st.rerun()
 
 COST_PER_DRAW = 10000
-
-st.set_page_config(page_title="超级抽奖机", page_icon="💰")
-st.title("🎰 幸运大抽奖")
-
-
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("总抽奖次数", st.session_state.total)
 col2.metric("中奖次数", st.session_state.wins)
 col3.metric("空奖次数", st.session_state.losses)
+col4.metric("当前资产", f"${st.session_state.profit}", delta=f"{st.session_state.profit - 150000}")
 
-col4.metric("累计盈利", f"${st.session_state.profit}", delta=f"{st.session_state.profit} USD")
-
-
-    if st.button('🔥 点击开始抽奖 🔥'):
-    st.session_state.total += 1
-    luckly = random.randint(0, 1000)
-    st.subheader(f"current luckly: {luckly}")
-    
-    current_money = 0  # 用来记录本次抽奖赚了多少
+st.write(f"one time = $10000 **${COST_PER_DRAW}**")
     
 
     if luckly == 91:
