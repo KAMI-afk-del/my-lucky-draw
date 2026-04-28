@@ -18,7 +18,7 @@ col1.metric("总抽奖次数", st.session_state.total_count)
 col2.metric("累计赢奖", st.session_state.win_count)
 col3.metric("累计空奖", st.session_state.loss_count)
     
-    if luckly == 91:
+     if luckly == 91:
         st.success("wow*congratulations*wow")
         st.markdown("#you get $91919")
     elif luckly == 78:
