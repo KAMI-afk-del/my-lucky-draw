@@ -37,7 +37,7 @@ col4.metric("当前资产", f"${st.session_state.profit}", delta=f"{st.session_s
 st.write(f"one time = $10000 **${COST_PER_DRAW}**")
     
 
-     if luckly == 91:
+    if luckly == 91:
         current_money = 91919
         st.success(f"wow*congratulations*wow\nyou get ${current_money}")
     elif luckly == 78:
