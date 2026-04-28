@@ -4,9 +4,9 @@ import random
 st.set_page_config(page_title="幸运大抽奖", page_icon="🎰")
 
 st.title("🎰 幸运大抽奖")
-st.write("看看你今天的运气如何？点击按钮开始抽奖！")
+st.write("看看你今天的运气如何？点击按钮开始抽奖")
 
-if st.button('🔥 点击开始抽奖 🔥'):
+if st.button('🖕点击开始抽奖🖕'):
     luckly = random.randint(0, 1000)
 
     st.subheader(f"current luckly: {luckly}")
@@ -70,6 +70,7 @@ if st.button('🔥 点击开始抽奖 🔥'):
         st.write(f"currnet money:you get ${money}")
         
     else:
+        st.snow
         st.error("    🤣you get notting🤣")
         st.write("🤣lol🤣get the fuck away🤣lol🤣")
         st.write("      🤣you fucking noob🤣")
