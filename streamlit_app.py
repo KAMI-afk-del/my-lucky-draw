@@ -1,74 +1,45 @@
 import streamlit as st
 import random
 
-# --- 1. 初始化账本 (只在第一次打开时运行) ---
+# --- 1. 初始化账本 (让网页记住数据) ---
 if 'total' not in st.session_state:
     st.session_state.total = 0
 if 'wins' not in st.session_state:
     st.session_state.wins = 0
 if 'losses' not in st.session_state:
     st.session_state.losses = 0
+if 'profit' not in st.session_state:
+    st.session_state.profit = 0
 
-st.set_page_config(page_title="幸运抽奖", page_icon="🎰")
+st.set_page_config(page_title="超级抽奖机", page_icon="💰")
 st.title("🎰 幸运大抽奖")
 
-# --- 2. 显示统计数据 (用 metric 组件很漂亮) ---
-col1, col2, col3 = st.columns(3)
+# --- 2. 显示仪表盘 (新增累计盈利) ---
+col1, col2, col3, col4 = st.columns(4)
 col1.metric("总抽奖次数", st.session_state.total)
 col2.metric("中奖次数", st.session_state.wins)
 col3.metric("空奖次数", st.session_state.losses)
+# delta 是变化量，这里用来显示盈利总额，非常专业
+col4.metric("累计盈利", f"${st.session_state.profit}", delta=f"{st.session_state.profit} USD")
 
 # 抽奖按钮
 if st.button('🔥 点击开始抽奖 🔥'):
-    # 只要点按钮，总数就加 1
     st.session_state.total += 1
-    
     luckly = random.randint(0, 1000)
     st.subheader(f"current luckly: {luckly}")
     
-    # 定义中奖逻辑 (把你的那些中奖数字都放进来)
-    is_win = False
-    if luckly in [91, 78, 13, 714, 999, 888] or luckly >= 700 or (1 <= luckly <= 10):
-        is_win = True
-
-    if is_win:
-        st.session_state.wins += 1
-        # --- 这里放你原本的所有奖励逻辑 ---
-        if luckly == 91:
-            st.success("wow*congratulations*wow\nyou get $91919")
-        elif luckly == 78:
-            st.success("wow*congratulations*wow\nyou get $78787")
-        elif luckly == 888:
-            st.balloons()
-            st.success("😮wow;;;😮congratulations😮;;;wow😮\nyou get $888888")
-        elif luckly >= 700:
-            st.success(";;;congratulations;;;")
-            money = random.randint(10000, 30000)
-            st.markdown(f"#you get ${money}")
-        # (篇幅原因，其他 elif 你可以根据之前的代码照样补齐)
-        
-    else:
-        st.session_state.losses += 1
-        # --- 这里放你原本的失败逻辑 (ewwww) ---
-        st.error("🤣you get notting🤣")
-        st.write("🤮ewwwwwwwwwww🤮")
-
-# --- 3. 添加一个重置按钮 ---
-if st.sidebar.button('重置统计数据'):
-    st.session_state.total = 0
-    st.session_state.wins = 0
-    st.session_state.losses = 0
-    st.rerun()
+    current_money = 0  # 用来记录本次抽奖赚了多少
     
+    # --- 3. 核心逻辑：判断奖金并累加盈利 ---
     if luckly == 91:
-        st.success("wow*congratulations*wow")
-        st.markdown("#you get $91919")
+        current_money = 91919
+        st.success(f"wow*congratulations*wow\nyou get ${current_money}")
     elif luckly == 78:
-        st.success("wow*congratulations*wow")
-        st.markdown("#you get $78787")
+        current_money = 78787
+        st.success(f"wow*congratulations*wow\nyou get ${current_money}")
     elif luckly == 13:
-        st.success("wow*congratulations*wow")
-        st.markdown("#you get $13131")
+        current_money = 13131
+        st.success(f"wow*congratulations*wow\nyou get ${current_money}")
     elif luckly == 714:
         st.warning("懂你意思")
         st.markdown("#you get $71400")
@@ -77,40 +48,47 @@ if st.sidebar.button('重置统计数据'):
         st.text("wkzkbl😮")
         st.text("wzbyqs😤")
         st.text("nzzyswwzbsbll🥵")
-    elif luckly == 999:
+   elif luckly == 999:
+        current_money = 488888
         st.balloons()
-        st.success("wow;;;😮congratulations😮;;;wow")
-        st.markdown("#you get $488888")
+        st.success(f"wow;;;😮congratulations😮;;;wow\nyou get ${current_money}")
     elif luckly == 888:
+        current_money = 888888
         st.balloons()
-        st.success("😮wow;;;😮congratulations😮;;;wow😮")
-        st.markdown("#you get $888888")
-        st.write("😮😮😮😮😮😮😮😮😮😮")
+        st.success(f"😮wow;;;😮congratulations😮;;;wow😮\nyou get ${current_money}")
     elif luckly >= 990:
+        current_money = random.randint(100000, 150000)
         st.snow()
-        st.success(";;;congratulations;;;")
-        money = random.randint(100000, 150000)
-        st.markdown(f"#currnet money:you get ${money}")
+        st.success(f";;;congratulations;;;\nyou get ${current_money}")
     elif luckly >= 900:
-        st.success(";;;congratulations;;;")
-        money = random.randint(50000, 80000)
-        st.markdown(f"#currnet money:you get ${money}")
+        current_money = random.randint(50000, 80000)
+        st.success(f";;;congratulations;;;\nyou get ${current_money}")
     elif luckly >= 800:
-        st.success(";;;congratulations;;;")
-        money = random.randint(20000, 30000)
-        st.markdown(f"#currnet money:you get ${money}")
+        current_money = random.randint(20000, 30000)
+        st.success(f";;;congratulations;;;\nyou get ${current_money}")
     elif luckly >= 700:
-        st.success(";;;congratulations;;;")
-        money = random.randint(10000, 12500)
-        st.markdown(f"#currnet money:you get ${money}")
+        current_money = random.randint(10000, 12500)
+        st.success(f";;;congratulations;;;\nyou get ${current_money}")
     elif 1 <= luckly <= 10:
-        st.success(";;;congratulations;;;")
-        money = random.randint(10000, 12500)
-        st.markdown(f"#currnet money:you get ${money}")
+        current_money = random.randint(10000, 12500)
+        st.success(f";;;congratulations;;;\nyou get ${current_money}")
     else:
+        current_money = 0
         st.error("🤣you get notting🤣")
         st.write("🤣lol🤣get the fuck away🤣lol🤣")
         st.write("🤣you fucking noob🤣")
         st.write("🤣lol🤣")
         st.write("🤮ewwwwwwwwwww🤮")
         st.write("🤮ewwwwwwwwwww🤮")
+# --- 4. 更新账本数据 ---
+    if current_money > 0:
+        st.session_state.wins += 1
+        st.session_state.profit += current_money
+    else:
+        st.session_state.losses += 1
+
+# --- 5. 侧边栏重置 ---
+if st.sidebar.button('重置所有数据'):
+    for key in st.session_state.keys():
+        del st.session_state[key]
+    st.rerun()
