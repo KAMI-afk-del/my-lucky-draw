@@ -84,6 +84,11 @@ if st.button('🔥 点击开始抽奖 🔥'):
     if current_money > 0:
         st.session_state.wins += 1
         st.session_state.profit += current_money
+st.divider()
+st.subheader("📜 中奖历史记录")
+if st.session_state.history:
+    for item in st.session_state.history[:10]: # 只显示最近10条
+        st.write(item)
     else:
         st.session_state.losses += 1
 
