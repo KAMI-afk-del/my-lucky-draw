@@ -18,7 +18,7 @@ if st.button("POOR (+500)"):
         st.toast("take the money and get the fuck away,you fucking noob")
         st.rerun()
     
-    st.divider()
+        st.divider()
  if st.button('清空数据重新开始'):
         for key in st.session_state.keys():
             del st.session_state[key]
