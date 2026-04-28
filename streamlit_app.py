@@ -87,7 +87,7 @@ else:
         st.write("🤮ewwwwwwwwwww🤮")
         st.write("🤮ewwwwwwwwwww🤮")
 
-record = f"{datetime.now().strftime('%H:%M:%S')} - 号码 {luckly}: 中奖 ${current_prize} ({result_msg})"
+record = f"{datetime.now(0).strftime('%H:%M:%S')} - 号码 {luckly}: 中奖 ${current_prize} ({result_msg})"
          st.session_state.history.insert(0, record)
 else:
     st.session_state.losses += 1
