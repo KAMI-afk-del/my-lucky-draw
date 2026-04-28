@@ -13,19 +13,19 @@ if st.button('🖕点击开始抽奖🖕'):
 
     if luckly == 91:
         st.success("wow*congratulations*wow")
-        st.write("you get $91919")
+        st.markdown("#you get $91919")
         
     elif luckly == 78:
         st.success("wow*congratulations*wow")
-        st.write("you get $78787")
+       st.markdown("#you get $78787")
         
     elif luckly == 13:
         st.success("wow*congratulations*wow")
-        st.write("you get $13131")
+        st.markdown("#you get $13131")
         
     elif luckly == 714:
         st.warning("懂你意思")
-        st.write("you get $71400")
+        st.markdown("#you get $71400")
         st.text("kskbl?🤨")
         st.text("zdjd🧐")
         st.text("wkzkbl😮")
@@ -33,18 +33,15 @@ if st.button('🖕点击开始抽奖🖕'):
         st.text("nzzyswwzbsbll🥵")
         
     elif luckly == 999:
-        st.balloons
         st.success("wow;;;😮congratulations😮;;;wow")
-        st.write("you get $488888")
+        st.markdown("#you get $488888")
         
     elif luckly == 888:
-        st.balloons()
         st.success("😮wow;;;😮congratulations😮;;;wow😮")
-        st.write("you get $888888")
+        st.markdown("#you get $888888")
         st.write("😮😮😮😮😮😮😮😮😮😮")
         
     elif luckly >= 990:
-        st.snow
         st.success(";;;congratulations;;;")
         money = random.randint(100000, 150000)
         st.write(f"currnet money:you get ${money}")
@@ -52,25 +49,24 @@ if st.button('🖕点击开始抽奖🖕'):
     elif luckly >= 900:
         st.success(";;;congratulations;;;")
         money = random.randint(50000, 80000)
-        st.write(f"currnet money:you get ${money}")
+        st.markdown(f#"currnet money:you get ${money}")
         
     elif luckly >= 800:
         st.success(";;;congratulations;;;")
         money = random.randint(20000, 30000)
-        st.write(f"currnet money:you get ${money}")
+        st.markdown(f#"currnet money:you get ${money}")
         
     elif luckly >= 700:
         st.success(";;;congratulations;;;")
         money = random.randint(10000, 12500)
-        st.write(f"currnet money:you get ${money}")
+        st.markdown(f#"currnet money:you get ${money}")
         
     elif 1 <= luckly <= 10:
         st.success(";;;congratulations;;;")
         money = random.randint(10000, 12500)
-        st.write(f"currnet money:you get ${money}")
+        st.markdown(f#"currnet money:you get ${money}")
         
     else:
-        st.snow
         st.error("    🤣you get notting🤣")
         st.write("🤣lol🤣get the fuck away🤣lol🤣")
         st.write("      🤣you fucking noob🤣")
