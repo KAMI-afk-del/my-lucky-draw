@@ -16,7 +16,7 @@ if st.button('🖕点击开始抽奖🖕'):
         st.markdown("#you get $91919")
         
     elif luckly == 78:
-        st.success("wow*congratulations*wow")
+       st.success("wow*congratulations*wow")
        st.markdown("#you get $78787")
         
     elif luckly == 13:
