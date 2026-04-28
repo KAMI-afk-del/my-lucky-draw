@@ -11,6 +11,24 @@ if 'losses' not in st.session_state:
 if 'profit' not in st.session_state:
     st.session_state.profit = 0
 
+with st.sidebar:
+    st.header("游戏选项")
+   
+    if st.button("POOR (+500)"):
+        st.session_state.profit += 500
+        st.toast("take the money and get the fuck away,you fucking noob")
+        st.rerun()
+    
+    st.divider()
+    if st.button('清空数据重新开始'):
+        for key in st.session_state.keys():
+            del st.session_state[key]
+        st.rerun()
+
+# --- 3. 顶部仪表盘 ---
+# 抽奖单价
+COST_PER_DRAW = 10000
+
 st.set_page_config(page_title="超级抽奖机", page_icon="💰")
 st.title("🎰 幸运大抽奖")
 
@@ -84,13 +102,6 @@ if st.button('🔥 点击开始抽奖 🔥'):
     if current_money > 0:
         st.session_state.wins += 1
         st.session_state.profit += current_money
-st.divider()
-st.subheader("📜 中奖历史记录")
-if st.session_state.history:
-    for item in st.session_state.history[:10]: # 只显示最近10条
-        st.write(item)
-    else:
-        st.session_state.losses += 1
 
 # --- 5. 侧边栏重置 ---
 if st.sidebar.button('重置所有数据'):
