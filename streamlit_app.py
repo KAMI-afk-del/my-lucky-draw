@@ -1,12 +1,22 @@
 import streamlit as st
 import random
-
+if 'total_count' not in st.session_state:
+    st.session_state.total_count = 0
+if 'win_count' not in st.session_state:
+    st.session_state.win_count = 0
+if 'loss_count' not in st.session_state:
+    st.session_state.loss_count = 0
 st.set_page_config(page_title="幸运抽奖", page_icon="🎰")
 st.title("🎰 幸运大抽奖")
 
-if st.button('🔥 点击开始抽奖 🔥'):
+if st.button('6 点击开始抽奖 7'):
     luckly = random.randint(0, 1000)
     st.subheader(f"current luckly: {luckly}")
+
+ol1, col2, col3 = st.columns(3)
+col1.metric("总抽奖次数", st.session_state.total_count)
+col2.metric("累计赢奖", st.session_state.win_count)
+col3.metric("累计空奖", st.session_state.loss_count)
     
     if luckly == 91:
         st.success("wow*congratulations*wow")
