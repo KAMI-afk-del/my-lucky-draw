@@ -37,16 +37,16 @@ col4.metric("当前资产", f"${st.session_state.profit}", delta=f"{st.session_s
 st.write(f"one time = $10000 **${COST_PER_DRAW}**")
     
 
-    if luckly == 91:
+   if luckly == 91:
         current_money = 91919
         st.success(f"wow*congratulations*wow\nyou get ${current_money}")
-    elif luckly == 78:
+   elif luckly == 78:
         current_money = 78787
         st.success(f"wow*congratulations*wow\nyou get ${current_money}")
-    elif luckly == 13:
+   elif luckly == 13:
         current_money = 13131
         st.success(f"wow*congratulations*wow\nyou get ${current_money}")
-    elif luckly == 714:
+   elif luckly == 714:
         st.warning("懂你意思")
         st.markdown("#you get $71400")
         st.text("kskbl?🤨")
@@ -54,31 +54,31 @@ st.write(f"one time = $10000 **${COST_PER_DRAW}**")
         st.text("wkzkbl😮")
         st.text("wzbyqs😤")
         st.text("nzzyswwzbsbll🥵")
-    elif luckly == 999:
+   elif luckly == 999:
         current_money = 488888
         st.balloons()
         st.success(f"wow;;;😮congratulations😮;;;wow\nyou get ${current_money}")
-    elif luckly == 888:
+   elif luckly == 888:
         current_money = 888888
         st.balloons()
         st.success(f"😮wow;;;😮congratulations😮;;;wow😮\nyou get ${current_money}")
-    elif luckly >= 990:
+   elif luckly >= 990:
         current_money = random.randint(100000, 150000)
         st.snow()
         st.success(f";;;congratulations;;;\nyou get ${current_money}")
-    elif luckly >= 900:
+   elif luckly >= 900:
         current_money = random.randint(50000, 80000)
         st.success(f";;;congratulations;;;\nyou get ${current_money}")
-    elif luckly >= 800:
+   elif luckly >= 800:
         current_money = random.randint(20000, 30000)
         st.success(f";;;congratulations;;;\nyou get ${current_money}")
-    elif luckly >= 700:
+   elif luckly >= 700:
         current_money = random.randint(10000, 12500)
         st.success(f";;;congratulations;;;\nyou get ${current_money}")
-    elif 1 <= luckly <= 10:
+   elif 1 <= luckly <= 10:
         current_money = random.randint(10000, 12500)
         st.success(f";;;congratulations;;;\nyou get ${current_money}")
-    else:
+   else:
         current_money = 0
         st.error("🤣you get notting🤣")
         st.write("🤣lol🤣get the fuck away🤣lol🤣")
@@ -91,13 +91,13 @@ st.write(f"one time = $10000 **${COST_PER_DRAW}**")
             st.session_state.history.insert(0, record)
         else:
             st.session_state.losses += 1
-    if current_money > 0:
+   if current_money > 0:
         st.session_state.wins += 1
         st.session_state.profit += current_money
 
 
-    if st.sidebar.button('重置所有数据'):
-    for key in st.session_state.keys():
+   if st.sidebar.button('重置所有数据'):
+   for key in st.session_state.keys():
         del st.session_state[key]
     st.rerun()
         st.divider()
