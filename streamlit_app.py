@@ -40,6 +40,10 @@ st.write(f"one time = $10000 **${COST_PER_DRAW}**")
 if luckly == 91:
         current_money = 91919
         st.success(f"wow*congratulations*wow\nyou get ${current_money}")
+elif luckly == 908:
+        current_money = 1
+        st.("神的诞生日")
+        st.("😋😋奖励你一块钱😋😋")
 elif luckly == 78:
         current_money = 78787
         st.success(f"wow*congratulations*wow\nyou get ${current_money}")
@@ -54,6 +58,7 @@ elif luckly == 714:
         st.text("wkzkbl😮")
         st.text("wzbyqs😤")
         st.text("nzzyswwzbsbll🥵")
+        st.text("☝️🤓👇康神开播啦？真的假的？🤨🤨我靠真开播了😮😮我没胖！我真比以前瘦了昂😠😠你们再这样说我我真的受不了了🥵🥵")
 elif luckly == 999:
         current_money = 488888
         st.balloons()
