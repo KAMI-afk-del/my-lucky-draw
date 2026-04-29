@@ -14,7 +14,7 @@ if 'history' not in st.session_state:
     st.session_state.history = []
 
 st.set_page_config(page_title="超级抽奖机 Pro", page_icon="🎰")
-st.title("🎰❗不要赌博❗")
+st.title("🎰❗不要赌博❗小心等下4.7k❗❗❗")
 
 with st.sidebar:
     st.header("游戏选项")
