@@ -18,7 +18,7 @@ st.title("🎰❗不要赌博❗")
 
 with st.sidebar:
     st.header("游戏选项")
-    if st.button("💰 领取补助 (+500)"):
+    if st.button("懦夫津贴 (+500)"):
         st.session_state.profit += 500
         st.rerun()
     st.divider()
@@ -101,7 +101,7 @@ if st.sidebar.button('重置所有数据'):
         del st.session_state[key]
     st.rerun()
         st.divider()
-st.subheader("📜 中奖历史记录")
+st.subheader(" 中奖记录")
 if st.session_state.history:
 for item in st.session_state.history[:20]
         st.write(item)
